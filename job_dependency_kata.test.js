@@ -59,4 +59,19 @@ test("Throw error is job depends on itself", () =>{
 	}).toThrow();
 });
 
+test("Throw error is jobs have circular dependencies", () =>{
+	var jobs = new Map();
+	jobs.set("a", "");
+	jobs.set("b", "c");
+	jobs.set("c", "f");
+	jobs.set("d", "a");
+	jobs.set("e", "");
+	jobs.set("f", "b");
+
+	expect(() => {
+		orderJobs(jobs);
+	}).toThrow();
+});
+
+
 

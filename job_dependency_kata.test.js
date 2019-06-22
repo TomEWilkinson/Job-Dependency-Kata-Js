@@ -20,12 +20,12 @@ test("Passing an map of three jobs with no dependcies returns those jobs in any 
 	expect(order_jobs(jobs)).toContain("c");
 });
 
-test("Passing an map of three jobs with dependcies returns those jobs where  c before b", () =>{
+test("Passing an map of three jobs with dependcies returns those jobs where c before b", () =>{
 	var jobs = new Map();
 	jobs.set("a", "");
 	jobs.set("b", "c");
 	jobs.set("c", "");
 
 	var ordered_jobs = order_jobs(jobs);
-	expect(ordered_jobs.indexOf("c") > ordered_jobs.indexOf("b")).toBeTruthy();
+	expect(ordered_jobs.indexOf("c") < ordered_jobs.indexOf("b")).toBeTruthy();
 });

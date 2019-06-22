@@ -29,3 +29,21 @@ test("Passing an map of three jobs with dependcies returns those jobs where c be
 	var ordered_jobs = order_jobs(jobs);
 	expect(ordered_jobs.indexOf("c") < ordered_jobs.indexOf("b")).toBeTruthy();
 });
+
+
+test("Passing an map of multiple jobs with multiple dependcies returns those jobs with the dependencies adhered to", () =>{
+	var jobs = new Map();
+	jobs.set("a", "");
+	jobs.set("b", "c");
+	jobs.set("c", "f");
+	jobs.set("d", "a");
+	jobs.set("e", "b");
+	jobs.set("f", "");
+
+	var ordered_jobs = order_jobs(jobs);
+
+	expect(ordered_jobs.indexOf("f") < ordered_jobs.indexOf("c")).toBeTruthy();
+	expect(ordered_jobs.indexOf("c") < ordered_jobs.indexOf("b")).toBeTruthy();
+	expect(ordered_jobs.indexOf("b") < ordered_jobs.indexOf("e")).toBeTruthy();
+	expect(ordered_jobs.indexOf("a") < ordered_jobs.indexOf("d")).toBeTruthy();
+});

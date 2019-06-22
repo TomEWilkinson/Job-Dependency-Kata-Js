@@ -7,5 +7,5 @@ test("Passing an empty string of jobs returns an empty list", () =>{
 test("Passing an empty string of jobs returns an empty list", () =>{
 	var jobs = new Map();
 	jobs.set("a", "");
-	expect(order_jobs(jobs)).toBe(["a"]);
+	expect(order_jobs(jobs)).toStrictEqual(["a"]);
 });

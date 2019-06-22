@@ -4,7 +4,13 @@ function order_jobs (jobs)
 	{
 		return "";
 	}
-	return jobs;
+     
+	let ordered_list = [];
+	jobs.forEach((value,key) => {
+		ordered_list.unshift(key);
+	});
+    
+	return ordered_list;
 }
 
 module.exports = order_jobs;

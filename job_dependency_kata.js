@@ -1,37 +1,40 @@
-function order_jobs (jobs) 
+function orderJobs (jobs) 
 {
+	//to account for a empty job list
 	if(!jobs)
 	{
 		return "";
 	}
      
-	let ordered_list = [];
-	let dependency_list = new Map();
+	let orderedList = [];
+	let dependencyList = new Map();
 	jobs.forEach((value,key) => {
 
 		//check if the job has a dependency already defined
-		if(dependency_list.has(key))
+		if(dependencyList.has(key))
 		{
-			let dependencyIndex = ordered_list.indexOf(dependency_list.get(key));
-			ordered_list.splice(dependencyIndex, 0, key);
+			let dependencyIndex = orderedList.indexOf(dependencyList.get(key));
+			orderedList.splice(dependencyIndex, 0, key);
 			return;
 		}
 
 		//if there's no value it doesn't have a dependency
 		if(!value)
 		{
-			ordered_list.unshift(key);
+			orderedList.unshift(key);
 			return;
 		}
 
 		//if there's a dependency add it to the dependency list with the value and keys switched
 		// so we can use has() on the list
-		dependency_list.set(value, key);
-		ordered_list.push(key);
+		dependencyList.set(value, key);
+
+		//Push to account for when a dependency has already been added
+		orderedList.push(key);
 
 	});
     
-	return ordered_list;
+	return orderedList;
 }
 
-module.exports = order_jobs;
+module.exports = orderJobs;

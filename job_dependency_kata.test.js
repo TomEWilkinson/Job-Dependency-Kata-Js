@@ -1,13 +1,13 @@
-const order_jobs = require("./job_dependency_kata");
+const orderJobs = require("./job_dependency_kata");
 
 test("Passing an empty string of jobs returns an empty list", () =>{
-	expect(order_jobs("")).toBe("");
+	expect(orderJobs("")).toBe("");
 });
 
 test("Passing an map of one job with no dependcies returns that job", () =>{
 	var jobs = new Map();
 	jobs.set("a", "");
-	expect(order_jobs(jobs)).toStrictEqual(["a"]);
+	expect(orderJobs(jobs)).toStrictEqual(["a"]);
 });
 
 test("Passing an map of three jobs with no dependcies returns those jobs in any order", () =>{
@@ -15,9 +15,9 @@ test("Passing an map of three jobs with no dependcies returns those jobs in any 
 	jobs.set("a", "");
 	jobs.set("b", "");
 	jobs.set("c", "");
-	expect(order_jobs(jobs)).toContain("a");
-	expect(order_jobs(jobs)).toContain("b");
-	expect(order_jobs(jobs)).toContain("c");
+	expect(orderJobs(jobs)).toContain("a");
+	expect(orderJobs(jobs)).toContain("b");
+	expect(orderJobs(jobs)).toContain("c");
 });
 
 test("Passing an map of three jobs with dependcies returns those jobs where c before b", () =>{
@@ -26,8 +26,8 @@ test("Passing an map of three jobs with dependcies returns those jobs where c be
 	jobs.set("b", "c");
 	jobs.set("c", "");
 
-	var ordered_jobs = order_jobs(jobs);
-	expect(ordered_jobs.indexOf("c") < ordered_jobs.indexOf("b")).toBeTruthy();
+	var orderedJobs = orderJobs(jobs);
+	expect(orderedJobs.indexOf("c") < orderedJobs.indexOf("b")).toBeTruthy();
 });
 
 
@@ -40,10 +40,10 @@ test("Passing an map of multiple jobs with multiple dependcies returns those job
 	jobs.set("e", "b");
 	jobs.set("f", "");
 
-	var ordered_jobs = order_jobs(jobs);
+	var orderedJobs = orderJobs(jobs);
 
-	expect(ordered_jobs.indexOf("f") < ordered_jobs.indexOf("c")).toBeTruthy();
-	expect(ordered_jobs.indexOf("c") < ordered_jobs.indexOf("b")).toBeTruthy();
-	expect(ordered_jobs.indexOf("b") < ordered_jobs.indexOf("e")).toBeTruthy();
-	expect(ordered_jobs.indexOf("a") < ordered_jobs.indexOf("d")).toBeTruthy();
+	expect(orderedJobs.indexOf("f") < orderedJobs.indexOf("c")).toBeTruthy();
+	expect(orderedJobs.indexOf("c") < orderedJobs.indexOf("b")).toBeTruthy();
+	expect(orderedJobs.indexOf("b") < orderedJobs.indexOf("e")).toBeTruthy();
+	expect(orderedJobs.indexOf("a") < orderedJobs.indexOf("d")).toBeTruthy();
 });

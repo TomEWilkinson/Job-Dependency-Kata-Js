@@ -9,7 +9,12 @@ function orderJobs (jobs)
 	let orderedList = [];
 	let dependencyList = new Map();
 	jobs.forEach((value,key) => {
-		
+
+		if(value == key)
+		{
+			throw new Error("jobs cannot be dependent on themselves");
+		}
+
 		if(value)
 		{
 			//if there's a dependency add it to the dependency list with the value and keys switched

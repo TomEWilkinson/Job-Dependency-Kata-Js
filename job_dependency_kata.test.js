@@ -47,3 +47,16 @@ test("Passing an map of multiple jobs with multiple dependcies returns those job
 	expect(orderedJobs.indexOf("b") < orderedJobs.indexOf("e")).toBeTruthy();
 	expect(orderedJobs.indexOf("a") < orderedJobs.indexOf("d")).toBeTruthy();
 });
+
+test("Throw error is job depends on itself", () =>{
+	var jobs = new Map();
+	jobs.set("a", "");
+	jobs.set("b", "");
+	jobs.set("c", "c");
+
+	expect(() => {
+		orderJobs(jobs);
+	}).toThrow();
+});
+
+

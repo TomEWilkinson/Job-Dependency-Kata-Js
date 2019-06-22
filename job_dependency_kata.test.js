@@ -10,3 +10,12 @@ test("Passing an map of one job with no dependcies returns that job", () =>{
 	expect(order_jobs(jobs)).toStrictEqual(["a"]);
 });
 
+test("Passing an map of three jobs with no dependcies returns those jobs in any order", () =>{
+	var jobs = new Map();
+	jobs.set("a", "");
+	jobs.set("b", "");
+	jobs.set("c", "");
+	expect(order_jobs(jobs)).toContain("a");
+	expect(order_jobs(jobs)).toContain("b");
+	expect(order_jobs(jobs)).toContain("c");
+});

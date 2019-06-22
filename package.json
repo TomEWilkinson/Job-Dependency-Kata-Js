@@ -1,0 +1,46 @@
+{
+  "name": "job_dependency_kata",
+  "version": "1.0.0",
+  "description": "Job dependency coding kata",
+  "main": "job_dependency_kata.js",
+  "dependencies": {
+    "cross-spawn": "^0.1.0",
+    "escodegen": "^0.1.0",
+    "fsevents": "^0.1.0",
+    "handlebars": "^0.1.0",
+    "istanbul-lib-source-maps": "^0.1.0",
+    "invariant": "^0.1.0",
+    "http-signature": "^0.1.0",
+    "istanbul-lib-instrument": "^0.1.0",
+    "jest-cli": "^0.1.0",
+    "jest": "^24.8.0",
+    "jest-haste-map": "^0.1.0",
+    "istanbul-reports": "^0.1.0",
+    "jest-jasmine2": "^0.1.0",
+    "jest-util": "^0.1.0",
+    "jest-snapshot": "^0.1.0",
+    "jest-runner": "^0.1.0",
+    "jsdom": "^0.1.0",
+    "make-dir": "^0.1.0",
+    "node-notifier": "^0.1.0",
+    "request": "^0.1.0",
+    "normalize-package-data": "^0.1.0",
+    "sane": "^0.1.0",
+    "source-map-resolve": "^0.1.0",
+    "tar": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomEWilkinson/Job-Dependency-Kata.git"
+  },
+  "author": "Tom Wilkinson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TomEWilkinson/Job-Dependency-Kata/issues"
+  },
+  "homepage": "https://github.com/TomEWilkinson/Job-Dependency-Kata#readme"
+}

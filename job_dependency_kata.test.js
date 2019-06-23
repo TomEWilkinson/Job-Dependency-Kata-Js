@@ -56,7 +56,7 @@ test("Throw error is job depends on itself", () =>{
 
 	expect(() => {
 		orderJobs(jobs);
-	}).toThrow();
+	}).toThrow(new Error ("jobs cannot be dependend on themselves"));
 });
 
 test("Throw error is jobs have circular dependencies", () =>{
@@ -70,7 +70,7 @@ test("Throw error is jobs have circular dependencies", () =>{
 
 	expect(() => {
 		orderJobs(jobs);
-	}).toThrow();
+	}).toThrow(new Error("Circle dependency detected"));
 });
 
 

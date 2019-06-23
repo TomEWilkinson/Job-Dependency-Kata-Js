@@ -12,7 +12,7 @@ function orderJobs (jobs)
 
 		if(value == key)
 		{
-			throw new Error("jobs cannot be dependent on themselves");
+			throw new Error("jobs cannot be dependend on themselves");
 		}
 
 		if(value)
@@ -26,7 +26,7 @@ function orderJobs (jobs)
 			{
 				if(circleDependencyCheck(dependencyList, dependencyList.get(key), key))
 				{
-					throw new Error("jobs cannot be dependent on themselves");
+					throw new Error("Circle dependency detected");
 				}
 			}
 		}
@@ -49,23 +49,20 @@ function orderJobs (jobs)
 
 function circleDependencyCheck(dependencyList,nextKey,originalKey)
 {
-	let r;
 	//if the orginal key equals the next one we have a circle dependency
 	if(originalKey === dependencyList.get(nextKey))
 	{
-		r = true;
+		return true;
 	}
 
 	//if it's not undeifned the chain continues
 	if(dependencyList.get(nextKey) != undefined)
 	{
-		circleDependencyCheck(dependencyList, dependencyList.get(nextKey), originalKey);
+		return circleDependencyCheck(dependencyList, dependencyList.get(nextKey), originalKey);
 	} else
 	{
-		r = false;
+		return false;
 	}
-		
-	return r;
 
 }
 

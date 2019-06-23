@@ -24,7 +24,10 @@ function orderJobs (jobs)
 			//if the key is already in the dependency list there's a possibility for circular dependencies
 			if(dependencyList.has(key))
 			{
-				circleDependencyCheck(dependencyList, dependencyList.get(key), key);
+				if(circleDependencyCheck(dependencyList, dependencyList.get(key), key))
+				{
+					throw new Error("jobs cannot be dependent on themselves");
+				}
 			}
 		}
 
@@ -44,21 +47,26 @@ function orderJobs (jobs)
 	return orderedList;
 }
 
-function circleDependencyCheck(dependencyList,nextKey,originalKey )
+function circleDependencyCheck(dependencyList,nextKey,originalKey)
 {
+	let r;
 	//if the orginal key equals the next one we have a circle dependency
-	if(originalKey == dependencyList.get(nextKey))
+	if(originalKey === dependencyList.get(nextKey))
 	{
-		throw new Error("jobs cannot be dependent on themselves");
+		r = true;
 	}
 
 	//if it's not undeifned the chain continues
 	if(dependencyList.get(nextKey) != undefined)
 	{
 		circleDependencyCheck(dependencyList, dependencyList.get(nextKey), originalKey);
-	} else {
-		return false;
+	} else
+	{
+		r = false;
 	}
+		
+	return r;
+
 }
 
 module.exports = orderJobs;

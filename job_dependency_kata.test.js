@@ -1,7 +1,7 @@
 const orderJobs = require("./job_dependency_kata");
 
 test("Passing an empty string of jobs returns an empty list", () =>{
-	expect(orderJobs("")).toBe("");
+	expect(orderJobs("")).toStrictEqual([]);
 });
 
 test("Passing an map of one job with no dependcies returns that job", () =>{

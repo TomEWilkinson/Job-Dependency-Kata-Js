@@ -10,7 +10,7 @@
     "handlebars": "^4.0.14",
     "istanbul-lib-source-maps": "^0.1.0",
     "invariant": "^0.1.0",
-    "http-signature": "^0.1.0",
+    "http-signature": "^0.10.0",
     "istanbul-lib-instrument": "^0.1.0",
     "istanbul-reports": "^0.1.0",
     "jest": "^24.8.0",

@@ -48,7 +48,7 @@ test("Passing an map of multiple jobs with multiple dependcies returns those job
 	expect(orderedJobs.indexOf("a") < orderedJobs.indexOf("d")).toBeTruthy();
 });
 
-test("Throw error is job depends on itself", () =>{
+test("Throw error if job depends on itself", () =>{
 	var jobs = new Map();
 	jobs.set("a", "");
 	jobs.set("b", "");
@@ -59,7 +59,7 @@ test("Throw error is job depends on itself", () =>{
 	}).toThrow(new Error ("jobs cannot be dependend on themselves"));
 });
 
-test("Throw error is jobs have circular dependencies", () =>{
+test("Throw error if jobs have circular dependencies", () =>{
 	var jobs = new Map();
 	jobs.set("a", "");
 	jobs.set("b", "c");

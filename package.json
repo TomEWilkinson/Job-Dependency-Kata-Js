@@ -7,7 +7,7 @@
     "cross-spawn": "^0.1.0",
     "escodegen": "^0.1.0",
     "fsevents": "^0.1.0",
-    "handlebars": "^4.0.14",
+    "handlebars": "^4.1.2",
     "istanbul-lib-source-maps": "^0.1.0",
     "invariant": "^0.1.0",
     "http-signature": "^0.10.0",

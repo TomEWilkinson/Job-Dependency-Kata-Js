@@ -6,16 +6,13 @@
         "jest": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": "airbnb-base",
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
+        "indent": [2, "space"],
         "linebreak-style": [
             "error",
             "unix"

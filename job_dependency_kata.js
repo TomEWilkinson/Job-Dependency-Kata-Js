@@ -1,36 +1,36 @@
 /**
  * takes in a list of jobs with their depencies and returns an ordered list of those jobs
  * 
- * @param {Map} jobs
+ * @param {Map} mapJobs
  * @returns {Array}
  */
-function orderJobs (jobs) 
+function orderJobs (mapJobs) 
 {
 	//to account for a empty job list
-	if(!jobs)
+	if(!mapJobs)
 	{
 		return [];
 	}
      
-	let orderedList = [];
-	let dependencyList = new Map();
-	jobs.forEach((job,dependency) => {
+	let arrOrderedList = [];
+	let mapDependencyList = new Map();
+	mapJobs.forEach((strJob, strDependency) => {
 
-		if(job == dependency)
+		if(strJob == strDependency)
 		{
 			throw new Error("jobs cannot be dependend on themselves");
 		}
 
-		if(job)
+		if(strJob)
 		{
 			//if there's a dependency add it to the dependency list with the value and keys switched
 			// so we can use has() on the list
-			dependencyList.set(job, dependency);
+			mapDependencyList.set(strJob, strDependency);
 			
 			//if the key is already in the dependency list there's a possibility for circular dependencies
-			if(dependencyList.has(dependency))
+			if(mapDependencyList.has(strDependency))
 			{
-				if(circleDependencyCheck(dependencyList, dependencyList.get(dependency), dependency))
+				if(circleDependencyCheck(mapDependencyList, mapDependencyList.get(strDependency), strDependency))
 				{
 					throw new Error("Circle dependency detected");
 				}
@@ -38,41 +38,41 @@ function orderJobs (jobs)
 		}
 
 		//check if the job has a dependency already defined
-		if(dependencyList.has(dependency))
+		if(mapDependencyList.has(strDependency))
 		{
-			let dependencyIndex = orderedList.indexOf(dependencyList.get(dependency));
-			orderedList.splice(dependencyIndex, 0, dependency);
+			let inDependencyIndex = arrOrderedList.indexOf(mapDependencyList.get(strDependency));
+			arrOrderedList.splice(inDependencyIndex, 0, strDependency);
 			return;
 		}
 
 		//Push to account for when a dependency has already been added
-		orderedList.push(dependency);
+		arrOrderedList.push(strDependency);
 
 	});
     
-	return orderedList;
+	return arrOrderedList;
 }
 
 /**
  * a Recursive function that checks for a circle dependency
  * 
- * @param {Map} dependencyList 
- * @param {string} nextKey 
- * @param {string} originalKey 
+ * @param {Map} mapDependencyList map of the dependency list
+ * @param {string} strNextKey the next key to be checked
+ * @param {string} strOriginalKey the orignal key in the chain
  * @returns {boolean}
  */
-function circleDependencyCheck(dependencyList,nextKey,originalKey)
+function circleDependencyCheck(mapDependencyList,strNextKey,strOriginalKey)
 {
 	//if the orginal key equals the next one we have a circle dependency
-	if(originalKey === dependencyList.get(nextKey))
+	if(strOriginalKey === mapDependencyList.get(strNextKey))
 	{
 		return true;
 	}
 
 	//if it's not undeifned the chain continues
-	if(dependencyList.get(nextKey) != undefined)
+	if(mapDependencyList.get(strNextKey) != undefined)
 	{
-		return circleDependencyCheck(dependencyList, dependencyList.get(nextKey), originalKey);
+		return circleDependencyCheck(mapDependencyList, mapDependencyList.get(strNextKey), strOriginalKey);
 	}
 
 	return false;

@@ -22,7 +22,7 @@
     "jest-util": "^0.1.0",
     "jsdom": "^0.1.0",
     "make-dir": "^0.1.0",
-    "node-notifier": "^0.1.0",
+    "node-notifier": "^8.0.1",
     "normalize-package-data": "^0.1.0",
     "request": "^2.88.2",
     "sane": "^0.1.0",

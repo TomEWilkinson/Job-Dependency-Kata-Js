@@ -20,7 +20,7 @@
     "jest-runner": "^0.1.0",
     "jest-snapshot": "^0.1.0",
     "jest-util": "^0.1.0",
-    "jsdom": "^0.1.0",
+    "jsdom": "^16.5.0",
     "make-dir": "^0.1.0",
     "node-notifier": "^0.1.0",
     "normalize-package-data": "^0.1.0",
